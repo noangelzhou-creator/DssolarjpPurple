@@ -36,6 +36,7 @@ export const Hero: React.FC<HeroProps> = ({ config }) => {
     // 1. background_gradient が最優先
     sectionStyle.background = config.background_gradient;
     // 動くグラデーション用のプロパティを追加
+    // 背景サイズを巨大にして滑らかなアニメーションを実現
     sectionStyle.backgroundSize = '400% 400%';
     sectionStyle.animation = 'gradientFlow 15s ease infinite';
     useCustomBackground = true;
