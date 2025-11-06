@@ -35,6 +35,9 @@ export const Hero: React.FC<HeroProps> = ({ config }) => {
   if (config?.background_gradient) {
     // 1. background_gradient が最優先
     sectionStyle.background = config.background_gradient;
+    // 動くグラデーション用のプロパティを追加
+    sectionStyle.backgroundSize = '400% 400%';
+    sectionStyle.animation = 'gradientFlow 15s ease infinite';
     useCustomBackground = true;
   } else if (config?.background_color) {
     // 2. background_color が次点
@@ -101,20 +104,27 @@ export const Hero: React.FC<HeroProps> = ({ config }) => {
             )}
           </p>
 
-          {/* CTAボタン */}
+          {/* CTAボタン - 優雅で飾った作り */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={() => handleScroll('contact')}
-              className="inline-flex items-center justify-center px-8 py-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-all transform hover:scale-105 shadow-lg"
+              className="group relative inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-bold hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 shadow-xl hover:shadow-2xl overflow-hidden"
             >
-              {t('お問い合わせ', '联系我们')}
-              <ArrowRight className="ml-2 w-5 h-5" />
+              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              <span className="relative flex items-center">
+                {t('お問い合わせ', '联系我们')}
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </span>
+              <span className="absolute inset-0 border-2 border-white opacity-0 group-hover:opacity-20 rounded-xl"></span>
             </button>
             <button
               onClick={() => handleScroll('service')}
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary border-2 border-primary rounded-lg font-semibold hover:bg-primary hover:text-white transition-all transform hover:scale-105 shadow-lg"
+              className="group relative inline-flex items-center justify-center px-10 py-5 bg-white text-indigo-600 border-2 border-indigo-600 rounded-xl font-bold hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 shadow-xl hover:shadow-2xl backdrop-blur-sm"
             >
-              {t('サービス詳細', '服务详情')}
+              <span className="relative flex items-center group-hover:text-purple-700 transition-colors duration-300">
+                {t('サービス詳細', '服务详情')}
+              </span>
+              <span className="absolute inset-0 border-2 border-purple-400 opacity-0 group-hover:opacity-100 rounded-xl scale-105 transition-all duration-300"></span>
             </button>
           </div>
         </div>

@@ -195,6 +195,7 @@ export const CompanyTab: React.FC = () => {
               value={data.company_name || ''}
               onChange={(e) => handleChange('company_name', e.target.value)}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+              placeholder="例: 株式会社嘉銘"
             />
           </div>
           <div>
@@ -206,6 +207,7 @@ export const CompanyTab: React.FC = () => {
               value={data.company_name_zh || ''}
               onChange={(e) => handleChange('company_name_zh', e.target.value)}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+              placeholder="例: 嘉铭株式会社"
             />
           </div>
           <div>
@@ -217,6 +219,35 @@ export const CompanyTab: React.FC = () => {
               value={data.company_name_en || ''}
               onChange={(e) => handleChange('company_name_en', e.target.value)}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+              placeholder="例: KAMEI Corporation"
+            />
+          </div>
+        </div>
+
+        {/* 事業内容 */}
+        <div className="grid md:grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              {t('事業内容（日本語）', '业务内容（日语）')}
+            </label>
+            <textarea
+              value={data.business_content_ja || ''}
+              onChange={(e) => handleChange('business_content_ja', e.target.value)}
+              rows={3}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+              placeholder="例: 太陽光発電システムの設計・施工・保守"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              {t('事業内容（中国語）', '业务内容（中文）')}
+            </label>
+            <textarea
+              value={data.business_content_zh || ''}
+              onChange={(e) => handleChange('business_content_zh', e.target.value)}
+              rows={3}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+              placeholder="例: 太阳能发电系统的设计、施工、维护"
             />
           </div>
         </div>
